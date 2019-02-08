@@ -1,0 +1,9 @@
+node_modules
+app/plugins
+app/skins
+app/themes
+app/vendor
+app/editor.build.js
+app/index.html
+app/yarn.lock
+dist

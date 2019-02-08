@@ -1,0 +1,16 @@
+/* Some parts of Gutenberg rely on the background WordPress style */
+body, html {
+	font-family: arial;
+}
+
+.editor-post-title__input,
+.editor-post-preview,
+.editor-post-saved-state,
+.editor-post-trash.button-link-delete
+{
+	display: none !important;
+}
+
+.editor-post-title__block {
+	height: 50px;
+}
