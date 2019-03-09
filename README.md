@@ -23,7 +23,7 @@ Communication between the two parts is through the functions exposed in `preload
 You can start the app in development mode by running both of these commands:
 
 - `yarn dev` - this will start webpack in development mode, and any changes will be auto-compiled
-- `yarn startdev` - this starts Electron, and points it at the development webpack
+- `yarn devstart` - this starts Electron, and points it at the development webpack
 
 Hot reloading is not enabled yet and you may need to reload pages.
 
