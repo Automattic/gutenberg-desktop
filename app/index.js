@@ -33,7 +33,7 @@ function createWindow() {
 		appWindow.loadFile( path.resolve( __dirname, 'index.html' ) );
 	}
 
-	//appWindow.webContents.openDevTools();
+	appWindow.webContents.openDevTools();
 
 	appWindow.webContents.on( 'new-window', function( event ) {
 		event.preventDefault();

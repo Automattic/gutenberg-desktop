@@ -16,22 +16,31 @@ const config = {
 				use: [ 'style-loader', 'css-loader' ],
 			},
 			{
+				test: /\.scss$/,
+				exclude: /node_modules/,
+				use: [ 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader' ],
+			},
+			{
 				test: /\.(js|mjs)$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader?cacheDirectory',
 			},
 		],
 	},
+	resolve: {
+		alias: {
+			'@wordpress/api-fetch': path.resolve( __dirname, 'editor', 'api' ),
+//			'@wordpress/editor': path.resolve( __dirname, 'gutenberg', 'packages', 'editor' ),
+		},
+	},
 	externals: {
 		react: 'React',
 		'react-dom': 'ReactDOM',
-		tinymce: 'tinymce',
+//		tinymce: 'tinymce',
 		moment: 'moment',
 		jquery: 'jQuery',
-		lodash: 'lodash',
-		'lodash-es': 'lodash',
 	},
-    plugins: [
+	plugins: [
 		new HtmlWebpackPlugin( {
 			title: 'Wordberg',
 			template: path.join( 'editor', 'index.ejs' ),
@@ -40,15 +49,15 @@ const config = {
 		new webpack.DefinePlugin( {
 			'process.env': { NODE_ENV: JSON.stringify( process.env.NODE_ENV || 'development' ) },
 		} ),
-        new CopyWebpackPlugin([
-            { from: 'node_modules/tinymce/plugins', to: './plugins' },
-            { from: 'node_modules/tinymce/themes', to: './themes' },
+		new CopyWebpackPlugin( [
+			{ from: 'node_modules/tinymce/plugins', to: './plugins' },
+			{ from: 'node_modules/tinymce/themes', to: './themes' },
 			{ from: 'node_modules/tinymce/skins', to: './skins' },
 			{ from: 'node_modules/jquery/dist/jquery.js', to: './vendor/jquery.js' },
 			{ from: 'node_modules/react/umd/react.development.js', to: './vendor/react.js' },
 			{ from: 'node_modules/react-dom/umd/react-dom.development.js', to: './vendor/react-dom.js' },
 			{ from: 'node_modules/moment/min/moment.min.js', to: './vendor/moment.js' },
-        ], {}),
+		], {} ),
 	],
 };
 

@@ -12,14 +12,31 @@ const isType = RegExp( '/wp/v2/types/\w' );
 const apiFetch = async options => {
 	const { method, path, data } = options;
 	const [ route ] = path.split( '?' );
-
+console.log( route );
 	// Types
 	if ( route === '/wp/v2/types' ) {
 		return types;
 	}
 
+	if ( route === '/wp/v2/types/wp_block' ) {
+		return {
+			description: '',
+			hierarchical: false,
+			name: 'Blocks',
+			rest_base: 'blocks',
+			slug: 'wp_block',
+			taxonomies: [],
+			_links: {
+			},
+		};
+	}
+
 	if ( route === '/wp/v2/types/post' || isType.test( route ) ) {
 		return types.post;
+	}
+
+	if ( route === '/wp/v2/blocks' ) {
+		return [];
 	}
 
 	// Posts
@@ -52,13 +69,14 @@ const apiFetch = async options => {
 	}
 
 	if ( isPost.test( route ) || isAutoSave.test( route ) ) {
+		debugger;
 		if ( ( method === 'POST' || method === 'PUT' ) && data ) {
 			savePage( options.data );
 		}
 
 		return getPage();
 	}
-
+debugger;
 	console.warn( 'Unmatched route: ', method || 'GET', path, data );
 	return {};
 };

@@ -23,6 +23,7 @@ export function getPage() {
 }
 
 export function savePage( data ) {
+	debugger;
 	const { currentFilename } = electron;
 	const item = getAsPost( data );
 

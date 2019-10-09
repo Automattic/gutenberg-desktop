@@ -86,12 +86,12 @@ ipcRenderer.on( 'clear', () => {
 } );
 
 ipcRenderer.on( 'save', () => {
-	wp.data.dispatch( 'core/editor' ).savePost();
+	wp.data.dispatch( 'core/editor' ).savePost().then( resp => console.log( resp ) ).catch( error => console.error( error ) );
 } );
 
 ipcRenderer.on( 'save-as', () => {
 	setDocumentName( false ); // Force the save dialog
-	wp.data.dispatch( 'core/editor' ).savePost();
+	wp.data.dispatch( 'core/editor' ).savePost().then( resp => console.log( resp ) ).catch( error => console.error( error ) );
 } );
 
 ipcRenderer.on( 'open', ( event, { content, filename } ) => {

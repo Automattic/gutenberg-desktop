@@ -29,6 +29,7 @@ function convertHtml( html, type, plain ) {
 }
 
 ipcMain.on( 'save-post', ( event, { filename, content } ) => {
+	console.log( 'saving' );
 	fs.writeFile( filename, convertContentForFilename( filename, content ), err => {
 		if ( err ) {
 			console.error( err );
