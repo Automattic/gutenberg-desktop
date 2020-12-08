@@ -1,63 +1,53 @@
 /**
  * WordPress dependencies
  */
-import React from 'react';
-import '@wordpress/editor'; // This shouldn't be necessary
 
-import { render, useState } from '@wordpress/element';
-import {
-	BlockEditorKeyboardShortcuts,
-	BlockEditorProvider,
-	BlockList,
-	WritingFlow,
-	ObserveTyping,
-} from '@wordpress/block-editor';
-import {
-	Popover,
-	SlotFillProvider,
-} from '@wordpress/components';
-import { registerCoreBlocks } from '@wordpress/block-library';
-import '@wordpress/format-library';
+import { render } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
 
-/* eslint-disable no-restricted-syntax */
-import '@wordpress/components/build-style/style.css';
-import '@wordpress/block-editor/build-style/style.css';
-import '@wordpress/block-library/build-style/style.css';
-import '@wordpress/block-library/build-style/editor.css';
-import '@wordpress/block-library/build-style/theme.css';
-import '@wordpress/format-library/build-style/style.css';
-/* eslint-enable no-restricted-syntax */
+import IsolatedBlockEditor from 'isolated-editor';
+import Wordberg from './wordberg';
+import './style.scss';
 
-function App( props ) {
-	const [ blocks, updateBlocks ] = useState( [] );
+const settings = {
+	iso: {
+		toolbar: {
+			inspector: true,
+			toc: true,
+		},
+		moreMenu: false,
+		blocks: {
+			disallowBlocks: [
+				'core/page-break',
+				'core/html',
+				'core/next-page',
+				'core/more',
+				'core/embed',
+				'core/shortcode',
+				'core/archives',
+				'core/calendar',
+				'core/categories',
+				'core/custom',
+				'core/latest-comments',
+				'core/latest-posts',
+				'core/rss',
+				'core/social',
+				'core/tag-cloud',
+				'core/search',
+				'core/social-link',
+				'core/social-links',
+				'core/file',
+			],
+		},
+	},
+};
 
-	return (
-		<div className="playground__body">
-			<SlotFillProvider>
-				<BlockEditorProvider
-					value={ blocks }
-					onInput={ updateBlocks }
-					onChange={ updateBlocks }
-				>
-					<div className="editor-styles-wrapper">
-						<BlockEditorKeyboardShortcuts />
-						<WritingFlow>
-							<ObserveTyping>
-								<BlockList />
-							</ObserveTyping>
-						</WritingFlow>
-					</div>
-					<Popover.Slot />
-				</BlockEditorProvider>
-			</SlotFillProvider>
-		</div>
-	);
-}
-
-registerCoreBlocks();
-
-render( <App />, document.getElementById( 'root' ) );
+render(
+	<IsolatedBlockEditor settings={ settings } onError={ () => document.location.reload() }>
+		<Wordberg />
+	</IsolatedBlockEditor>,
+	document.querySelector( '#root' )
+);

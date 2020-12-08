@@ -3,7 +3,9 @@ app/plugins
 app/skins
 app/themes
 app/vendor
-app/editor.build.js
+app/editor.build.*
 app/index.html
 app/yarn.lock
 dist
+/.DS_Store
+/isolated-editor

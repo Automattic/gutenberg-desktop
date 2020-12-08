@@ -1,46 +1,22 @@
-const fs = require( 'fs' );
-const { dialog } = require( 'electron' );
+const {
+	saveFile,
+	saveFileAs,
+	openFile,
+} = require( './ipc-editor' );
+const showAbout = require( './about' );
 
-function newDocument( win ) {
-	win.webContents.send( 'clear' );
-}
-
-function saveFile( win ) {
-	win.webContents.send( 'save' );
-}
-
-function saveFileAs( win ) {
-	win.webContents.send( 'save-as' );
-}
-
-function openFile( win ) {
-	const file = dialog.showOpenDialog( {
-		title: 'Open HTML or Markdown file',
-		filters: [
-			{ name: 'Web pages', extensions: [ 'html', 'md' ] },
-		],
-	} );
-
-	if ( file && file.length > 0 ) {
-		fs.readFile( file[ 0 ], 'utf-8', ( err, data ) => {
-			if ( err ) {
-				console.error( err );
-				return;
-			}
-
-			win.webContents.send( 'open', { content: data.trim( '\n' ), filename: file[ 0 ] } );
-		} );
-	}
-}
-
-function copyText( win, type ) {
-	win.send( 'copy', type );
-}
-
-const menuHandlers = ( menuItem, browserWindow ) => {
+const menuHandlers = ( menuItem, browserWindow, createEditor, removeEditor ) => {
 	switch ( menuItem.id ) {
+		case 'about':
+			showAbout();
+			break;
+
 		case 'new-document':
-			newDocument( browserWindow );
+			createEditor();
+			break;
+
+		case 'close':
+			removeEditor( browserWindow );
 			break;
 
 		case 'save':
@@ -55,19 +31,8 @@ const menuHandlers = ( menuItem, browserWindow ) => {
 			openFile( browserWindow );
 			break;
 
-		case 'copy-plain':
-			copyText( browserWindow, 'plain' );
+		default:
 			break;
-
-		case 'copy-markdown':
-			copyText( browserWindow, 'markdown' );
-			break;
-
-		case 'copy-html':
-			copyText( browserWindow, 'html' );
-			break;
-
-		default: break;
 	}
 };
 

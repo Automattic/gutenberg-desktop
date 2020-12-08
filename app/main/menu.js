@@ -8,13 +8,12 @@ const isMac = () => process.platform === 'darwin';
 
 function buildMenu( menuHandler ) {
 	return [
-		... (
-			isMac
-				? [
+		...( isMac
+			? [
 					{
 						label: app.getName(),
 						submenu: [
-							{ role: 'about' },
+							{ label: 'About', id: 'about', click: menuHandler },
 							{ type: 'separator' },
 							{ role: 'services' },
 							{ type: 'separator' },
@@ -25,9 +24,8 @@ function buildMenu( menuHandler ) {
 							{ role: 'quit' },
 						],
 					},
-				]
-				: []
-		),
+			  ]
+			: [] ),
 		{
 			label: 'File',
 			submenu: [
@@ -57,6 +55,12 @@ function buildMenu( menuHandler ) {
 					accelerator: 'CommandOrControl+Shift+S',
 					id: 'save-as',
 				},
+				{
+					label: 'Close',
+					accelerator: 'CommandOrControl+W',
+					id: 'close',
+					role: 'close',
+				},
 			],
 		},
 		{
@@ -67,47 +71,19 @@ function buildMenu( menuHandler ) {
 				{ type: 'separator' },
 				{ role: 'cut' },
 				{ role: 'copy' },
-				{
-					label: 'Copy As',
-					submenu: [
-						{
-							label: 'Plain text',
-							click: menuHandler,
-							id: 'copy-plain',
-						},
-						{
-							label: 'Markdown',
-							click: menuHandler,
-							id: 'copy-markdown',
-						},
-						{
-							label: 'HTML',
-							click: menuHandler,
-							id: 'copy-html',
-						},
-					],
-				},
 				{ role: 'paste' },
-				...
-				( isMac
+				...( isMac
 					? [
-						{ role: 'pasteAndMatchStyle' },
-						{ role: 'delete' },
-						{ role: 'selectAll' },
-						{ type: 'separator' },
-						{
-							label: 'Speech',
-							submenu: [
-								{ role: 'startspeaking' },
-								{ role: 'stopspeaking' },
-							],
-						},
-					]
-					: [
-						{ role: 'delete' },
-						{ type: 'separator' },
-						{ role: 'selectAll' },
-					] ),
+							{ role: 'pasteAndMatchStyle' },
+							{ role: 'delete' },
+							{ role: 'selectAll' },
+							{ type: 'separator' },
+							{
+								label: 'Speech',
+								submenu: [ { role: 'startspeaking' }, { role: 'stopspeaking' } ],
+							},
+					  ]
+					: [ { role: 'delete' }, { type: 'separator' }, { role: 'selectAll' } ] ),
 			],
 		},
 		{
@@ -129,24 +105,20 @@ function buildMenu( menuHandler ) {
 			submenu: [
 				{ role: 'minimize' },
 				{ role: 'zoom' },
-				... (
-					isMac
-						? [
-							{ type: 'separator' },
-							{ role: 'front' },
-							{ type: 'separator' },
-							{ role: 'window' },
-						]
-						: [
-							{ role: 'close' },
-						] ),
+				...( isMac
+					? [ { type: 'separator' }, { role: 'front' }, { type: 'separator' }, { role: 'window' } ]
+					: [ { role: 'close' } ] ),
 			],
 		},
 	];
 }
 
-function setupMenu( handlers ) {
-	const menu = Menu.buildFromTemplate( buildMenu( handlers ) );
+function setupMenu( menuHandlers, createEditor, removeEditor ) {
+	const menu = Menu.buildFromTemplate(
+		buildMenu( ( menuItem, browserWindow ) => {
+			menuHandlers( menuItem, browserWindow, createEditor, removeEditor );
+		} )
+	);
 	Menu.setApplicationMenu( menu );
 }
 
