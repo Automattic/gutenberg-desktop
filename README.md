@@ -48,6 +48,10 @@ You will need a MacOS signing certificate.
 
 # Publishing
 
+Create a draft release on Github and set the tag to `vX.X.X` (with the version filled in from `package.json`).
+
 `yarn pub`
 
 Your Github token will need to exist in the `GH_TOKEN` environment variable. Create it from https://github.com/settings/tokens as a personal access token with scope `repo`
+
+The release will then be uploaded to the draft and can be published when ready.
