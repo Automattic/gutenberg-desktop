@@ -1,8 +1,7 @@
 /**
  * External dependencies
  */
-const { app, BrowserWindow } = require( 'electron' );
-const path = require( 'path' );
+const { app, session } = require( 'electron' );
 
 /**
  * Internal dependencies
@@ -10,43 +9,34 @@ const path = require( 'path' );
 const menuHandlers = require( './main/menu-handlers' );
 const setupMenu = require( './main/menu' );
 const setupContext = require( './main/context-menu' );
+const setupIpc = require( './main/ipc-server' );
+const createEditor = require( './main/create-editor' );
 
-require( './main/ipc' );
+let editorWindows = [];
 
-let appWindow;
+function createNewEditor() {
+	editorWindows.push( createEditor( app, removeEditor ) );
+}
 
-function createWindow() {
-	// Create the browser window.
-	appWindow = new BrowserWindow( {
-		width: 1200,
-		height: 768,
-		webPreferences: {
-			nodeIntegration: false,
-			preload: path.resolve( __dirname, 'preload.js' ),
-		},
-	} );
-
-	// and load the index.html of the app.
-	if ( process.env.NODE_ENV === 'development' ) {
-		appWindow.loadURL( 'http://localhost:3312' );
-	} else {
-		appWindow.loadFile( path.resolve( __dirname, 'index.html' ) );
-	}
-
-	//appWindow.webContents.openDevTools();
-
-	appWindow.webContents.on( 'new-window', function( event ) {
-		event.preventDefault();
-		return;
-	} );
-
-	return appWindow;
+function removeEditor( editor ) {
+	editorWindows = editorWindows.filter( ( item ) => item !== editor );
 }
 
 ( async () => {
 	await app.whenReady();
 
-	appWindow = createWindow();
-	setupMenu( menuHandlers );
+	// Create first window
+	createNewEditor();
+
+	// Set everything up
+	setupIpc();
+	setupMenu( menuHandlers, createNewEditor );
 	setupContext( menuHandlers );
+
+	// Disable navigation away from the editor
+	app.on( 'web-contents-created', ( event, contents ) => {
+		contents.on( 'will-navigate', ( event, navigationUrl ) => {
+			event.preventDefault();
+		} );
+	} );
 } )();

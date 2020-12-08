@@ -20,6 +20,8 @@ Communication between the two parts is through the functions exposed in `preload
 
 # Development
 
+Note: you will need to symlink `isolated-editor` here.
+
 You can start the app in development mode by running both of these commands:
 
 - `yarn dev` - this will start webpack in development mode, and any changes will be auto-compiled
