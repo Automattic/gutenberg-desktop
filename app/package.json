@@ -9,18 +9,17 @@
 		"dev": "NODE_ENV=development webpack-dev-server --progress --colors --config ./webpack.config.js --port 3312 --mode development",
 		"devstart": "NODE_ENV=development electron ./app/index.js",
 		"pack": "electron-builder --dir",
-		"dist": "electron-builder",
-		"postinstall": "electron-builder install-app-deps"
+		"dist": "electron-builder"
 	},
 	"author": "Automattic",
 	"license": "ISC",
 	"dependencies": {
 		"electron-context-menu": "^0.11.0",
-		"jquery": "1.12.4",
-		"moment": "^2.24.0",
+		"markdown-it": "^12.0.3",
 		"react": "^16.7.0",
 		"react-dom": "^16.7.0",
+		"redux-undo": "^1.0.1",
 		"tinymce": "^5.0.0",
-		"turndown": "^5.0.3"
+		"turndown": "^7.0.0"
 	}
 }

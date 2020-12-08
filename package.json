@@ -2,15 +2,20 @@
 	"name": "wordberg",
 	"version": "1.0.0",
 	"description": "Desktop Gutenberg without WordPress",
+	"homepage": "https://github.com/Automattic/wordberg",
+	"repository": {
+		"url": "https://github.com/Automattic/wordberg"
+	},
 	"main": "app/index.js",
 	"scripts": {
 		"start": "electron ./app/index.js",
 		"start-editor": "NODE_ENV=development webpack --mode development --watch --progress --config ./webpack.config.js ",
 		"build-editor": "NODE_ENV=production webpack --mode production --progress --config ./webpack.config.js",
-		"dev": "NODE_ENV=development webpack-dev-server --progress --colors --config ./webpack.config.js --port 3312 --mode development",
 		"devstart": "NODE_ENV=development electron ./app/index.js",
 		"pack": "electron-builder --dir",
-		"dist": "electron-builder"
+		"dist": "electron-builder -ml",
+		"pub": "electron-builder --publish onTagOrDraft",
+		"postinstall": "electron-builder install-app-deps"
 	},
 	"author": "Automattic",
 	"license": "ISC",
@@ -52,6 +57,8 @@
 		"babel-plugin-inline-json-import": "^0.3.2",
 		"copy-webpack-plugin": "^6.3.2",
 		"css-loader": "^5.0.1",
+		"electron-builder": "^22.9.1",
+		"electron-updater": "^4.3.5",
 		"eslint": "^7.14.0",
 		"eslint-config-wpcalypso": "^6.1.0",
 		"eslint-plugin-react": "^7.21.5",
@@ -74,7 +81,11 @@
 		"appId": "com.automattic.wordberg",
 		"productName": "Wordberg",
 		"mac": {
-			"category": "public.app-category.developer-tools"
+			"category": "public.app-category.developer-tools",
+			"publish": [ "github" ]
+		},
+		"linux": {
+			"publish": [ "github" ]
 		},
 		"asar": true,
 		"extraResources": [

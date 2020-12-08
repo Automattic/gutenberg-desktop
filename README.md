@@ -24,8 +24,8 @@ Note: you will need to symlink `isolated-editor` here.
 
 You can start the app in development mode by running both of these commands:
 
-- `yarn dev` - this will start webpack in development mode, and any changes will be auto-compiled
-- `yarn devstart` - this starts Electron, and points it at the development webpack
+- `yarn start-editor` - this will start webpack in development mode, and any changes will be auto-compiled
+- `yarn start` - this starts Electron, and points it at the development webpack
 
 Hot reloading is not enabled yet and you may need to reload pages.
 
@@ -35,12 +35,19 @@ Note that any changes to the main Electron code will require Electron to be rest
 
 To get a production copy:
 
-- `yarn build` - builds `app/editor.build.js`, which is bundled with the main Electron app
+- `yarn build-editor` - builds `app/editor.build.js`, which is bundled with the main Electron app
 - `yarn start` - start Electron and points it at `app/editor.build.js`
 
 # Packaging for distribution
 
 - `yarn build` - make sure we have the latest code
-- `yarn dist`
+- `yarn pack` - generates package files, but doesn't bundle them. Useful for testing.
+- `yarn dist` - builds full package bundles
 
 You will need a MacOS signing certificate.
+
+# Publishing
+
+`yarn pub`
+
+Your Github token will need to exist in the `GH_TOKEN` environment variable. Create it from https://github.com/settings/tokens as a personal access token with scope `repo`
