@@ -14,7 +14,7 @@
 		"devstart": "NODE_ENV=development electron ./app/index.js",
 		"pack": "electron-builder --dir",
 		"dist": "electron-builder -ml",
-		"pub": "electron-builder --publish onTagOrDraft",
+		"pub": "electron-builder -ml --publish onTagOrDraft",
 		"postinstall": "electron-builder install-app-deps"
 	},
 	"author": "Automattic",
