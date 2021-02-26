@@ -3,13 +3,13 @@
  */
 
 import { render } from '@wordpress/element';
+import IsolatedBlockEditor from '../isolated-block-editor/src';
 
 /**
  * Internal dependencies
  */
 
-import IsolatedBlockEditor from 'isolated-editor';
-import Wordberg from './wordberg';
+import GutenbergDesktop from './gutenberg-desktop';
 import './style.scss';
 
 const settings = {
@@ -47,7 +47,7 @@ const settings = {
 
 render(
 	<IsolatedBlockEditor settings={ settings } onError={ () => document.location.reload() }>
-		<Wordberg />
+		<GutenbergDesktop />
 	</IsolatedBlockEditor>,
 	document.querySelector( '#root' )
 );

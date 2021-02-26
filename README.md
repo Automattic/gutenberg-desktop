@@ -1,4 +1,4 @@
-# Wordberg
+# Gutenberg Desktop
 
 What happens when Gutenberg and Electron are mashed together.
 
@@ -19,8 +19,6 @@ Communication between the two parts is through the functions exposed in `preload
 - `dist` - Contains distribution files
 
 # Development
-
-Note: you will need to symlink `isolated-editor` here.
 
 You can start the app in development mode by running both of these commands:
 

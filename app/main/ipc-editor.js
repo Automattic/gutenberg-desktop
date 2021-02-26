@@ -3,7 +3,7 @@ const { dialog } = require( 'electron' );
 const MarkdownIt = require( 'markdown-it' );
 
 /**
- * These IPC commands go to the web renderer containing Wordberg and Gutenberg. They are actioned upon by the `preload.js` script.
+ * These IPC commands go to the web renderer containing Gutenberg Desktop and Gutenberg. They are actioned upon by the `preload.js` script.
  */
 
 function convertContent( content, fileType ) {

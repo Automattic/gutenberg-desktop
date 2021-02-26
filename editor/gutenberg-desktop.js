@@ -7,7 +7,7 @@ import { useState } from '@wordpress/element';
 import SetTitle from './title';
 import EditorIpc from './ipc';
 
-function Wordberg() {
+function GutenbergDesktop() {
 	const [ currentFilename, setCurrentFilename ] = useState( null );
 
 	return (
@@ -18,4 +18,4 @@ function Wordberg() {
 	);
 }
 
-export default Wordberg;
+export default GutenbergDesktop;

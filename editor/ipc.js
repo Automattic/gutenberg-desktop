@@ -26,7 +26,7 @@ function convertToBlocks( content, fileType = 'html' ) {
 }
 
 // Not sure why, but the filename is not updating when bound in an ipcRenderer callback. For now doing this hack
-window.wordbergFilename = '';
+window.gutenbergDesktopFilename = '';
 
 function EditorIpc( { filename, setFilename } ) {
 	const { resetBlocks } = useDispatch( 'core/block-editor' );
@@ -43,8 +43,8 @@ function EditorIpc( { filename, setFilename } ) {
 	}
 
 	function save() {
-		if ( wordbergFilename ) {
-			ipcRenderer.send( 'server:save', { filename: wordbergFilename, content: serialize( getBlocks() || [] ) } );
+		if ( gutenbergDesktopFilename ) {
+			ipcRenderer.send( 'server:save', { filename: gutenbergDesktopFilename, content: serialize( getBlocks() || [] ) } );
 			return;
 		}
 
@@ -69,7 +69,7 @@ function EditorIpc( { filename, setFilename } ) {
 	}, [] );
 
 	useEffect( () => {
-		window.wordbergFilename = filename;
+		window.gutenbergDesktopFilename = filename;
 	}, [ filename ] );
 
 	return null;
