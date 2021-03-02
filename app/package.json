@@ -1,5 +1,5 @@
 {
-	"name": "wordberg",
+	"name": "gutenberg-desktop-app",
 	"version": "1.0.0",
 	"description": "Desktop Gutenberg without WordPress",
 	"main": "index.js",

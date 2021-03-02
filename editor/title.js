@@ -8,7 +8,7 @@ import { useEffect } from '@wordpress/element';
 
 function SetTitle( { filename } ) {
 	useEffect( () => {
-		document.title = 'Wordberg';
+		document.title = 'Gutenberg Desktop';
 
 		if ( filename ) {
 			document.title = path.basename( filename ) + ' | ' + document.title;

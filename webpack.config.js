@@ -13,6 +13,11 @@ const config = {
 	module: {
 		rules: [
 			{
+				test: /\.(js)$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+			},
+			{
 				test: /\.scss|\.css$/,
 				use: [
 					{
@@ -23,26 +28,19 @@ const config = {
 					'sass-loader',
 				],
 			},
-			{
-				test: /\.(js|mjs)$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader?cacheDirectory',
-			},
 		],
-	},
-	resolve: {
-		alias: {
-			'isolated-editor': path.resolve( 'isolated-editor'),
-		},
-		modules: [ path.resolve( __dirname, 'node_modules' ) ],
 	},
 	externals: {
 		react: 'React',
 		'react-dom': 'ReactDOM',
 	},
+	resolve: {
+		extensions: [ '.js', '.jsx', '.scss', '.css' ],
+		symlinks: false,
+	},
 	plugins: [
 		new HtmlWebpackPlugin( {
-			title: 'Wordberg',
+			title: 'Gutenberg Desktop',
 			template: path.join( 'editor', 'index.ejs' ),
 			hash: true,
 		} ),
@@ -54,12 +52,12 @@ const config = {
 		} ),
 		new CopyWebpackPlugin( {
 			patterns: [
-				{ from: 'node_modules/tinymce/plugins', to: './plugins' },
-				{ from: 'node_modules/tinymce/themes', to: './themes' },
-				{ from: 'node_modules/tinymce/skins', to: './skins' },
 				{ from: 'node_modules/react/umd/react.development.js', to: './vendor/react.js' },
 				{ from: 'node_modules/react-dom/umd/react-dom.development.js', to: './vendor/react-dom.js' },
 			],
+		} ),
+		new webpack.ProvidePlugin( {
+			process: 'process/browser',
 		} ),
 	],
 };
