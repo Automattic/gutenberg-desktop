@@ -3,7 +3,7 @@
  */
 
 import { render } from '@wordpress/element';
-import IsolatedBlockEditor from '../isolated-block-editor/src';
+import IsolatedBlockEditor from 'isolated-block-editor';
 
 /**
  * Internal dependencies

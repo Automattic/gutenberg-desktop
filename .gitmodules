@@ -1,3 +1,0 @@
-[submodule "isolated-block-editor"]
-	path = isolated-block-editor
-	url = git@github.com:Automattic/isolated-block-editor.git
