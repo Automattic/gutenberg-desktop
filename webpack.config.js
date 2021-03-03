@@ -36,7 +36,10 @@ const config = {
 	},
 	resolve: {
 		extensions: [ '.js', '.jsx', '.scss', '.css' ],
-		symlinks: false,
+		alias: {
+			path: require.resolve( 'path-browserify' ),
+		},
+		//symlinks: true,
 	},
 	plugins: [
 		new HtmlWebpackPlugin( {

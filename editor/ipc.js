@@ -29,13 +29,14 @@ function convertToBlocks( content, fileType = 'html' ) {
 window.gutenbergDesktopFilename = '';
 
 function EditorIpc( { filename, setFilename } ) {
-	const { resetBlocks } = useDispatch( 'core/block-editor' );
-	const { getBlocks } = useSelect(
-		( select ) => ( {
-			getBlocks: select( 'isolated/editor' ).getBlocks,
-		} ),
-		[]
-	);
+	// TODO: this isn't working with the isolated-block-editor as a package. it works when a submodule
+	// const { resetBlocks } = useDispatch( 'core/block-editor' );
+	// const { getBlocks } = useSelect(
+	// 	( select ) => ( {
+	// 		getBlocks: select( 'isolated/editor' ).getBlocks,
+	// 	} ),
+	// 	[]
+	// );
 
 	function saveAs( filename ) {
 		setFilename( filename );
