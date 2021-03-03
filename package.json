@@ -18,7 +18,7 @@
 		"postinstall": "electron-builder install-app-deps"
 	},
 	"author": "Automattic",
-	"license": "ISC",
+	"license": "GPL-2.0-or-later",
 	"dependencies": {
 		"electron": "^11.3.0",
 		"electron-context-menu": "^2.5.0",
