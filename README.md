@@ -1,5 +1,7 @@
 # Gutenberg Desktop
 
+<img width="1280" src="build/banner-1544x500.png">
+
 What happens when Gutenberg and Electron are mashed together.
 
 As with other Electron apps there are two basic components:
@@ -43,6 +45,12 @@ To get a production copy:
 - `yarn dist` - builds full package bundles
 
 You will need a MacOS signing certificate.
+
+To generate the icons:
+
+- `iconutil -c icon.icns icons`
+
+To convert to Windows .ico use https://convertico.com/
 
 # Publishing
 
