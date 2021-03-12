@@ -1,6 +1,6 @@
 {
 	"name": "gutenberg-desktop",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Desktop Gutenberg without WordPress",
 	"homepage": "https://github.com/Automattic/gutenberg-desktop",
 	"repository": {
@@ -22,7 +22,7 @@
 	"dependencies": {
 		"electron": "^11.3.0",
 		"electron-context-menu": "^2.5.0",
-		"isolated-block-editor": "automattic/isolated-block-editor#be4797e4809fb50d804a631c2ec269afda331d73",
+		"isolated-block-editor": "automattic/isolated-block-editor#5682ddeb940bfac9c3923491263aaf4ce44aaf0e",
 		"lodash": "^4.17.21",
 		"markdown-it": "^12.0.4",
 		"path": "^0.12.7",
