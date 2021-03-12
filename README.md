@@ -40,7 +40,7 @@ To get a production copy:
 
 # Packaging for distribution
 
-- `yarn build` - make sure we have the latest code
+- `yarn build-editor` - make sure we have the latest code
 - `yarn pack` - generates package files, but doesn't bundle them. Useful for testing.
 - `yarn dist` - builds full package bundles
 
