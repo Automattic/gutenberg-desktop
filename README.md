@@ -10,6 +10,16 @@ As with other Electron apps there are two basic components:
 
 Communication between the two parts is through the functions exposed in `preload.js`
 
+Note that this is a proof of concept.
+
+The extension uses the [Isolated Block Editor](https://github.com/Automattic/isolated-block-editor/). This can also be found in:
+- [Plain Text Editor](https://github.com/Automattic/isolated-block-editor/src/browser/README.md) - standalone JS file that can replace any `textarea` on any page with a full Gutenberg editor
+- [Gutenberg Everywhere](https://github.com/Automattic/gutenberg-everywhere/) - a WordPress plugin to add Gutenberg to comments, WP admin pages, bbPress, and BuddyPress
+- [Gutenberg Chrome Extension](https://github.com/Automattic/gutenberg-everywhere-chrome/) - a Chrome extension that allows Gutenberg to be used on any page
+- [P2](https://wordpress.com/p2/) - WordPress as a collaborative workspace (coming soon for self-hosted)
+- Editor Block - a block that allows an editor to be added to a page (coming soon)
+
+
 ## Directories
 
 - `app` - Contains the full app, including main Electron code and the compiled web app
