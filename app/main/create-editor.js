@@ -12,8 +12,8 @@ function createEditor( app, cleanUp ) {
 		minWidth: 400,
 		minHeight: 400,
 		webPreferences: {
-			enableRemoteModule: false,
-			nodeIntegration: false,
+			// nodeIntegration: true,
+			// contextIsolation: false,
 			preload: path.join( app.getAppPath(), 'preload.js' ),
 		},
 	} );
