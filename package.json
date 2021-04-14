@@ -1,6 +1,6 @@
 {
 	"name": "gutenberg-desktop",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"description": "Desktop Gutenberg without WordPress",
 	"homepage": "https://github.com/Automattic/gutenberg-desktop",
 	"repository": {
