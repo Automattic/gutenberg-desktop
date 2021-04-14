@@ -6,7 +6,7 @@ import { useEffect } from '@wordpress/element';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { pasteHandler, serialize } from '@wordpress/blocks';
 
-const { ipcRenderer } = window;
+const editor = window.editor;
 
 /**
  * Convert HTML to blocks
@@ -39,16 +39,16 @@ function EditorIpc( { filename, setFilename } ) {
 
 	function saveAs( filename ) {
 		setFilename( filename );
-		ipcRenderer.send( 'server:save', { filename, content: serialize( getBlocks() || [] ) } );
+		editor.save( filename, serialize( getBlocks() || [] ) );
 	}
 
 	function save() {
 		if ( gutenbergDesktopFilename ) {
-			ipcRenderer.send( 'server:save', { filename: gutenbergDesktopFilename, content: serialize( getBlocks() || [] ) } );
+			editor.save( gutenbergDesktopFilename, serialize( getBlocks() || [] ) );
 			return;
 		}
 
-		ipcRenderer.invoke( 'server:get-save-as' ).then( ( filePath ) => {
+		editor.getSaveAs().then( ( filePath ) => {
 			if ( filePath ) {
 				saveAs( filePath );
 			}
@@ -56,16 +56,16 @@ function EditorIpc( { filename, setFilename } ) {
 	}
 
 	useEffect( () => {
-		ipcRenderer.on( 'editor:open', ( event, details ) => {
+		editor.onOpen( ( event, details ) => {
 			setFilename( details.filename );
 			resetBlocks( convertToBlocks( details.content, details.fileType ) );
 		} );
 
-		ipcRenderer.on( 'editor:save-as', ( event, details ) => {
+		editor.onSaveAs( ( event, details ) => {
 			saveAs( details.filename );
 		} );
 
-		ipcRenderer.on( 'editor:save', save );
+		editor.onSave( save );
 	}, [] );
 
 	useEffect( () => {
