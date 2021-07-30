@@ -3,7 +3,7 @@
  */
 
 import { render } from '@wordpress/element';
-import IsolatedBlockEditor from 'isolated-block-editor';
+import IsolatedBlockEditor from '@automattic/isolated-block-editor';
 
 /**
  * Internal dependencies
@@ -11,6 +11,7 @@ import IsolatedBlockEditor from 'isolated-block-editor';
 
 import GutenbergDesktop from './gutenberg-desktop';
 import './style.scss';
+import '@automattic/isolated-block-editor/build-browser/isolated-block-editor.css';
 
 const settings = {
 	iso: {
