@@ -11,6 +11,7 @@ import IsolatedBlockEditor from '@automattic/isolated-block-editor';
 
 import GutenbergDesktop from './gutenberg-desktop';
 import './style.scss';
+import '@automattic/isolated-block-editor/build-browser/core.css';
 import '@automattic/isolated-block-editor/build-browser/isolated-block-editor.css';
 
 const settings = {

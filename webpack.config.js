@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const webpack = require( 'webpack' );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 const config = {
 	entry: './editor/index.js',
@@ -36,12 +37,9 @@ const config = {
 	},
 	resolve: {
 		extensions: [ '.js', '.jsx', '.scss', '.css' ],
-		alias: {
-			path: require.resolve( 'path-browserify' ),
-		},
-		//symlinks: true,
 	},
 	plugins: [
+		new NodePolyfillPlugin(),
 		new HtmlWebpackPlugin( {
 			title: 'Gutenberg Desktop',
 			template: path.join( 'editor', 'index.ejs' ),
@@ -58,9 +56,6 @@ const config = {
 				{ from: 'node_modules/react/umd/react.development.js', to: './vendor/react.js' },
 				{ from: 'node_modules/react-dom/umd/react-dom.development.js', to: './vendor/react-dom.js' },
 			],
-		} ),
-		new webpack.ProvidePlugin( {
-			process: 'process/browser',
 		} ),
 	],
 };
