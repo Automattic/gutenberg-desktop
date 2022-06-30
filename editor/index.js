@@ -20,6 +20,10 @@ const settings = {
 			inspector: true,
 			toc: true,
 		},
+		sidebar: {
+			inspector: true,
+			inserter: true,
+		},
 		moreMenu: false,
 		blocks: {
 			disallowBlocks: [
