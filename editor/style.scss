@@ -119,3 +119,16 @@ li {
 	font-size: 15px;
 	font-weight: 600;
 }
+
+.interface-interface-skeleton__sidebar {
+	height: calc(100vh - 60px);
+
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.interface-interface-skeleton__content {
+	margin-top: 2em;
+}
