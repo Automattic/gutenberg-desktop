@@ -23,7 +23,7 @@
 		"@automattic/isolated-block-editor": "^2.16.0",
 		"@wordpress/blocks": "^11.11.0",
 		"@wordpress/data": "^6.12.0",
-		"electron": "19.0.6",
+		"electron": "19.0.11",
 		"electron-context-menu": "^3.3.0",
 		"lodash": "^4.17.21",
 		"markdown-it": "^13.0.1",
