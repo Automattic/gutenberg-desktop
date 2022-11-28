@@ -3002,12 +3002,7 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node@*":
-  version "16.11.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.11.tgz#6ea7342dfb379ea1210835bada87b3c512120234"
-  integrity sha512-KB0sixD67CeecHC33MYn+eYARkqTheIRNuu97y2XMjR7Wu3XibO1vaY6VBV6O/a89SPI81cEUIYT87UqUWlZNw==
-
-"@types/node@^16.11.26":
+"@types/node@*", "@types/node@^16.11.26":
   version "16.11.42"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.42.tgz#d2a75c58e9b0902b82dc54bd4c13f8ef12bd1020"
   integrity sha512-iwLrPOopPy6V3E+1yHTpJea3bdsNso0b0utLOJJwaa/PLzqBt3GZl3stMcakc/gr89SfcNk2ki3z7Gvue9hYGQ==
@@ -5581,7 +5576,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001272, caniuse-lite@^1.0.30001280, caniuse-lite@^1.0.30001335, caniuse-lite@^1.0.30001359, caniuse-lite@^1.0.30001361:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001272, caniuse-lite@^1.0.30001280, caniuse-lite@^1.0.30001335, caniuse-lite@^1.0.30001359:
   version "1.0.30001361"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001361.tgz#ba2adb2527566fb96f3ac7c67698ae7fc495a28d"
   integrity sha512-ybhCrjNtkFji1/Wto6SSJKkWk6kZgVQsDq5QI83SafsF6FXv2JB4df9eEdH6g8sdGgqTXrFLjAxqBGgYoU3azQ==
@@ -7034,10 +7029,10 @@ electron-updater@^5.0.5:
     semver "^7.3.5"
     typed-emitter "^2.1.0"
 
-electron@19.0.6:
-  version "19.0.6"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-19.0.6.tgz#7aacfa4e968f134eecc36a1b03e3f9954ed8f6a5"
-  integrity sha512-S9Yud32nKhB0iWC0lGl2JXz4FQnCiLCnP5Vehm1/CqyeICcQGmgQaZl2HYpCJ2pesKIsYL9nsgmku/10cxm/gg==
+electron@19.0.11:
+  version "19.0.11"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-19.0.11.tgz#0c0a52abc08694fd38916d9270baf45bb7752a27"
+  integrity sha512-GPM6C1Ze17/gR4koTE171MxrI5unYfFRgXQdkMdpWM2Cd55LMUrVa0QHCsfKpsaloufv9T65lsOn0uZuzCw5UA==
   dependencies:
     "@electron/get" "^1.14.1"
     "@types/node" "^16.11.26"
