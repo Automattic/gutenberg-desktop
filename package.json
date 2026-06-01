@@ -59,7 +59,7 @@
 		"html-webpack-plugin": "^5.5.0",
 		"mini-css-extract-plugin": "^2.6.1",
 		"node-polyfill-webpack-plugin": "^2.0.0",
-		"postcss": "^8.4.14",
+		"postcss": "^8.5.10",
 		"postcss-loader": "^7.0.0",
 		"precss": "^4.0.0",
 		"sass": "1.69.5",
