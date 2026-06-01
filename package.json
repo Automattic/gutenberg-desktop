@@ -26,7 +26,7 @@
 		"electron": "39.8.5",
 		"electron-context-menu": "^3.3.0",
 		"lodash": "^4.17.21",
-		"markdown-it": "^13.0.1",
+		"markdown-it": "^14.1.1",
 		"path": "^0.12.7",
 		"path-browserify": "^1.0.1",
 		"turndown": "^7.1.1"
